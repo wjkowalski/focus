@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2>family=Lexend:wgth@400&display=swap');
+        :root {
+            --x: 50%;
+            --y: 50%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body {
+            overflow:hidden;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Lexend', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main {
+            z-index: 1;
+        }
+        h1 {
+            font-size: max(10vw, 60px);
+        }
+        #bg, #bg_mask {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: calc(0.7vmax * -1);
+            /* background: url('https://images.unsplash.com/photo-1533912352517-92dd08116ea4?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover; */
+
+            background:url('https://images.unsplash.com/photo-1619441207978-3d326c46e2c9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover;
+
+        }
+        #bg {
+            filter: blur(0.7vmax);
+        }
+        #bg_mask {
+            mask-image: radial-gradient(circle 50vmin at var(--x) var(--y), black 20vmin, transparent);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="bg"></div>
+    <div id="bg_mask"></div>
+    <main>
+        <h1>Focus</h1>
+    </main>
+    <script>
+        "use strict";
+        console.clear();
+        var root = document.querySelector(':root');
+        function spotlight(e){
+            root.style.setProperty("--x", 
+            e.pageX + "px");
+            root.style.setProperty("--y",
+            e.pageY + "px");
+        }
+        window.addEventListener('pointermove', spotlight);
+        window.addEventListener('pointerdown', spotlight);
+    </script>
+</body>
+</html>
